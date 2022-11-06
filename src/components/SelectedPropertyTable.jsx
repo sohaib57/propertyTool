@@ -13,9 +13,10 @@ import { useSelector } from 'react-redux';
 
 const SelectedPropertytable = () => {
   const { selectedPropertyData } = useSelector(state => state.table);
-  if (selectedPropertyData === undefined) {
-    return;
-  }
+
+  const extractedData = selectedPropertyData.filter(element => {
+    return element !== undefined;
+  });
 
   return (
     <Stack pt={'20px'}>
@@ -31,20 +32,20 @@ const SelectedPropertytable = () => {
             </Tr>
           </Thead>
           <Tbody bg={'#f4f5f9'}>
-            {selectedPropertyData.map(selectedPropertyData => {
+            {extractedData.map(extractedData => {
               return (
-                <Tr>
+                <Tr key={extractedData?.id}>
                   <Td borderBottom={'2px solid black'}>
-                    {selectedPropertyData?.address}
+                    {extractedData?.address}
                   </Td>
                   <Td borderBottom={'2px solid black'}>
-                    {selectedPropertyData?.postcode}
+                    {extractedData?.postcode}
                   </Td>
                   <Td borderBottom={'2px solid black'}>
-                    {selectedPropertyData?.numberofrooms}
+                    {extractedData?.numberofrooms}
                   </Td>
                   <Td borderBottom={'2px solid black'}>
-                    {selectedPropertyData?.floorarea}
+                    {extractedData?.floorarea}
                   </Td>
                 </Tr>
               );

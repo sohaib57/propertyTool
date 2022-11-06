@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { propertyDetails } from '../../propertyDetails.js';
 
 const initialState = {
-  propertyData: [],
+  propertyData: propertyDetails,
   isLoading: false,
 };
 

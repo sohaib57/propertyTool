@@ -11,10 +11,12 @@ import {
   Checkbox,
 } from '@chakra-ui/react';
 import { CheckIcon } from '@chakra-ui/icons';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { addSelectedProperties } from '../redux/tablemodel/TableSlice';
 
 const SearchTable = () => {
+  const dispatch = useDispatch();
   const [check, setCheckId] = useState();
   const [rowId, setRowId] = useState();
   const { filteredPropertyData } = useSelector(state => state.table);
@@ -23,13 +25,14 @@ const SearchTable = () => {
     setCheckId(e.target.checked);
     setRowId(id);
   };
-
   const payload = {
     selectState: check,
     tableRowId: rowId,
   };
 
-  
+  useEffect(() => {
+    dispatch(addSelectedProperties(payload));
+  }, [check]);
 
   return (
     <Stack py={'20px'}>

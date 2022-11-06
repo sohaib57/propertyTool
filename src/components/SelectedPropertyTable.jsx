@@ -9,8 +9,14 @@ import {
   Tbody,
   Heading,
 } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
 
 const SelectedPropertytable = () => {
+  const { selectedPropertyData } = useSelector(state => state.table);
+  if (selectedPropertyData === undefined) {
+    return;
+  }
+
   return (
     <Stack pt={'20px'}>
       <Heading size={'sm'}>Selected Properties</Heading>
@@ -25,12 +31,24 @@ const SelectedPropertytable = () => {
             </Tr>
           </Thead>
           <Tbody bg={'#f4f5f9'}>
-            <Tr>
-              <Td borderBottom={'2px solid black'}>data</Td>
-              <Td borderBottom={'2px solid black'}>data</Td>
-              <Td borderBottom={'2px solid black'}>data</Td>
-              <Td borderBottom={'2px solid black'}>data</Td>
-            </Tr>
+            {selectedPropertyData.map(selectedPropertyData => {
+              return (
+                <Tr>
+                  <Td borderBottom={'2px solid black'}>
+                    {selectedPropertyData?.address}
+                  </Td>
+                  <Td borderBottom={'2px solid black'}>
+                    {selectedPropertyData?.postcode}
+                  </Td>
+                  <Td borderBottom={'2px solid black'}>
+                    {selectedPropertyData?.numberofrooms}
+                  </Td>
+                  <Td borderBottom={'2px solid black'}>
+                    {selectedPropertyData?.floorarea}
+                  </Td>
+                </Tr>
+              );
+            })}
           </Tbody>
         </Table>
       </TableContainer>

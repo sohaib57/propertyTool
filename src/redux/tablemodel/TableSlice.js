@@ -5,6 +5,7 @@ const initialState = {
   propertyData: propertyDetails,
   filteredPropertyData: propertyDetails,
   isLoading: false,
+  selectedPropertyData: [],
 };
 
 const tableSlice = createSlice({
@@ -21,9 +22,16 @@ const tableSlice = createSlice({
           action.payload.length > 0 ? filteredData : [...state.propertyData],
       };
     },
-    addSelectedProperties: (state, action) => {},
+    addSelectedProperties: (state, { payload }) => {
+      const extractId = payload.tableRowId;
+      const filteredData = propertyDetails.find(obj => obj.id === extractId);
+      return {
+        ...state,
+        selectedPropertyData: [...state.selectedPropertyData, filteredData],
+      };
+    },
   },
 });
 
-export const { searchByAddress } = tableSlice.actions;
+export const { searchByAddress, addSelectedProperties } = tableSlice.actions;
 export default tableSlice.reducer;

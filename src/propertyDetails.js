@@ -47,4 +47,37 @@ export const propertyDetails = [
     numberofrooms: 2,
     floorarea: 22,
   },
+
+  {
+    id: 7,
+    address: 'Johar Town',
+    postcode: 22211,
+    type: 'Semi-detached',
+    numberofrooms: 2,
+    floorarea: 22,
+  },
+  {
+    id: 8,
+    address: 'Gulberg',
+    postcode: 22211,
+    type: 'Semi-detached',
+    numberofrooms: 2,
+    floorarea: 22,
+  },
+  {
+    id: 9,
+    address: 'Canal View',
+    postcode: 22211,
+    type: 'Semi-detached',
+    numberofrooms: 2,
+    floorarea: 22,
+  },
+  {
+    id: 10,
+    address: 'Askari',
+    postcode: 22211,
+    type: 'Semi-detached',
+    numberofrooms: 2,
+    floorarea: 22,
+  },
 ];
